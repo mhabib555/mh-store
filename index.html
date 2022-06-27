@@ -6,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        /* 
+        =========================================
+        =========================================
+        =========================================
+        global
+        =========================================
+        =========================================
+        ========================================= 
+        */
+        
         * {
             padding: 0;
             margin: 0;
@@ -13,6 +23,14 @@
         
         body {
             position: relative;
+        }
+        
+        .hide {
+            display: none;
+        }
+        
+        .minimize {
+            width: 0px !important;
         }
         /* 
         =========================================
@@ -22,67 +40,9 @@
         =========================================
         =========================================
         ========================================= 
-        
         */
-        /* menu toggle buttn */
         
-        .hamburger-btn {
-            border: 1px solid white;
-            width: 30px;
-            height: 30px;
-            padding: 4px;
-            border-radius: 5px;
-        }
-        
-        .hamburger-btn:hover {
-            background: white;
-        }
-        
-        .hamburger-btn:hover .lines,
-        .hamburger-btn:hover .lines:before,
-        .hamburger-btn:hover .lines::after {
-            border-top: 2px solid orange;
-        }
-        
-        .lines {
-            border-top: 2px solid white;
-            height: 1px;
-            margin-top: 8px;
-            display: block;
-        }
-        
-        .lines::before,
-        .lines::after {
-            content: "";
-            border-top: 2px solid white;
-            margin-top: 4px;
-            display: block;
-        }
-        
-        .hamburger-btn.active .lines {
-            transform: translateY(6px) scaleX(0.9)
-        }
-        
-        .hamburger-btn.active .lines::before {
-            transform: rotate(135deg) translate(-2.9px, 14.3px) scaleX(0.6)
-        }
-        
-        .hamburger-btn.active .lines::after {
-            transform: rotate(45deg) translate(-9px, 1.7px) scaleX(0.6)
-        }
-        
-        nav {
-            height: 50px;
-            background-color: rgb(100, 31, 180);
-            z-index: 8888;
-        }
-        
-        .nav-container {
-            /* position: relative; */
-            padding: 5px;
-        }
-        
-        aside {
+        .aside {
             width: 220px;
             position: fixed;
             left: 0;
@@ -95,31 +55,12 @@
             transition: 1.8s;
         }
         
-        main {
-            margin-left: 220px;
-            background-color: rgb(255, 226, 191);
-            height: 100%;
-            transition: 1.8s;
-        }
-        
-        .main-expanded {
-            margin-left: 0px;
-        }
-        
-        .hide {
-            display: none;
-        }
-        
-        .minimize {
-            width: 0px;
-        }
-        
-        .aside-menu {
+        .aside__menu {
             position: relative;
             overflow: hidden;
         }
         
-        .aside-menu .menu-btn {
+        .aside__menu .aside__menu-btn {
             padding: 17px;
             border: 1px solid #fff;
             border-right: none;
@@ -130,12 +71,12 @@
             transition: 0.3s;
         }
         
-        .aside-menu .menu-btn:hover {
+        .aside__menu .aside__menu-btn:hover {
             padding: 17px;
             background-color: #fff;
         }
         
-        .aside-menu .menu-link {
+        .aside__menu .aside__menu-link {
             text-decoration: none;
             color: white;
             font-family: Helvetica;
@@ -143,43 +84,129 @@
             font-weight: bolder;
         }
         
-        .aside-menu .menu-btn:hover .menu-link {
+        .aside__menu .aside__menu-btn:hover .aside__menu-link {
             text-decoration: none;
             color: orange;
             font-family: Helvetica;
             font-size: 14px;
             font-weight: bolder;
         }
+        /* 
+        =========================================
+        =========================================
+        =========================================
+        Navbar
+        =========================================
+        =========================================
+        ========================================= 
+        */
+        
+        .navbar {
+            height: 50px;
+            background-color: rgb(100, 31, 180);
+            z-index: 8888;
+        }
+        
+        .navbar__container {
+            padding: 5px;
+        }
+        /* menu toggle buttn */
+        
+        .navbar__hamburger-btn {
+            border: 1px solid white;
+            width: 30px;
+            height: 30px;
+            padding: 4px;
+            border-radius: 5px;
+        }
+        
+        .navbar__hamburger-btn:hover {
+            background: white;
+        }
+        
+        .navbar__hamburger-btn:hover .navbar__hamburger-lines,
+        .navbar__hamburger-btn:hover .navbar__hamburger-lines:before,
+        .navbar__hamburger-btn:hover .navbar__hamburger-lines::after {
+            border-top: 2px solid orange;
+        }
+        
+        .navbar__hamburger-lines {
+            border-top: 2px solid white;
+            height: 1px;
+            margin-top: 8px;
+            display: block;
+        }
+        
+        .navbar__hamburger-lines::before,
+        .navbar__hamburger-lines::after {
+            content: "";
+            border-top: 2px solid white;
+            margin-top: 4px;
+            display: block;
+        }
+        
+        .navbar__hamburger-btn.active .navbar__hamburger-lines {
+            transform: translateY(6px) scaleX(0.9)
+        }
+        
+        .navbar__hamburger-btn.active .navbar__hamburger-lines::before {
+            transform: rotate(135deg) translate(-2.9px, 14.3px) scaleX(0.6)
+        }
+        
+        .navbar__hamburger-btn.active .navbar__hamburger-lines::after {
+            transform: rotate(45deg) translate(-9px, 1.7px) scaleX(0.6)
+        }
+        /* 
+        =========================================
+        =========================================
+        =========================================
+        main
+        =========================================
+        =========================================
+        ========================================= 
+        */
+        
+        .main {
+            margin-left: 220px;
+            background-color: rgb(255, 226, 191);
+            height: 100%;
+            transition: 1.8s;
+        }
+        
+        .main--expanded {
+            margin-left: 0px;
+        }
     </style>
 </head>
 
 <body>
-    <aside id="aside" class="minimize">
-        <ul class="aside-menu">
-            <li class="menu-btn">
-                <a href="" class="menu-link">Customers</a>
+    <aside id="aside" class="aside minimize">
+        <ul class="aside__menu">
+            <li class="aside__menu-btn">
+                <a href="" class="aside__menu-link">Customers</a>
             </li>
-            <li class="menu-btn">
-                <a href="" class="menu-link">Products</a>
+            <li class="aside__menu-btn">
+                <a href="" class="aside__menu-link">Products</a>
             </li>
-            <li class="menu-btn">
-                <a href="" class="menu-link">Reports</a>
+            <li class="aside__menu-btn">
+                <a href="" class="aside__menu-link">Reports</a>
             </li>
         </ul>
 
     </aside>
-    <main id="main" class="main-expanded">
-        <nav>
-            <div class="nav-container">
-                <div id="hamburger-btn" class="hamburger-btn">
-                    <span class="lines"></span>
+    <main id="main" class="main main--expanded">
+        <nav class="navbar">
+            <div class="navbar__container">
+                <div id="navbar__hamburger-btn" class="navbar__hamburger-btn">
+                    <span class="navbar__hamburger-lines"></span>
                 </div>
             </div>
         </nav>
 
     </main>
     <script>
-        var hamburgerBtn = document.getElementById('hamburger-btn');
+        //aside menu toggle
+        var hamburgerBtn = document.getElementById('navbar__hamburger-btn');
         var aside = document.getElementById('aside');
         var main = document.getElementById('main');
         hamburgerBtn.addEventListener('click', function() {
@@ -189,13 +216,13 @@
                 //hide side menu
                 aside.classList.add('minimize');
                 // move main to the left 220px
-                main.classList.add('main-expanded');
+                main.classList.add('main--expanded');
             } else {
                 this.classList.add('active');
                 // show side menu
                 aside.classList.remove('minimize');
                 // move main to right 220 px
-                main.classList.remove('main-expanded');
+                main.classList.remove('main--expanded');
             }
         });
     </script>
